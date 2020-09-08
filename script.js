@@ -13,20 +13,20 @@ function generatePassword () {
 
   if (!pLength) {
     alert ("This needs a value. Try Again.");
-    var pLength = (prompt("How many characters would you like your password to include?"));
+    var pLength = (prompt("How many characters would you like your password to include? (Must be between 8 and 128 characters)"));
   }
   if (pLength < 8 || pLength > 128) {
     alert ("You must choose between 8 and 128 characters. Try Again.");
-    var pLength = (prompt("How many characters would you like your password to include?"));
+    var pLength = (prompt("How many characters would you like your password to include? (Must be between 8 and 128 characters)"));
   }
   if (pLength >= 8 || pLength <= 128) {
     alert ("You choose " + pLength + " characters.")
-    var confirmNumber = (confirm("Click ok if your password will contain numbers."));
-    var confirmSpecialChar = (confirm("Click ok if your password will contain special characters."));
-    var confirmAlphaLower = (confirm("Click ok if your password will contain lower case letters."));
-    var confirmAlphaUpper = (confirm("Click ok if your password will contain upper case letters."));
+    var confirmNumber = (confirm("Click ok if you would like your password to contain numbers."));
+    var confirmSpecialChar = (confirm("Click ok if you would like your password to contain special characters."));
+    var confirmAlphaLower = (confirm("Click ok if you would like your password to contain lower case letters."));
+    var confirmAlphaUpper = (confirm("Click ok if you would like your password to contain upper case letters."));
   }
-
+// Set conditional if no criteria are selected
   if (!confirmNumber && !confirmSpecialChar && !confirmAlphaLower && !confirmAlphaUpper) {
     alert("You must choose at least one criteria.");
     var confirmNumber = (confirm("Click ok if your password will contain numbers."));
@@ -34,6 +34,7 @@ function generatePassword () {
     var confirmAlphaLower = (confirm("Click ok if your password will contain lower case letters."));
     var confirmAlphaUpper = (confirm("Click ok if your password will contain upper case letters."));
   };
+// Set Conditionals letting user know what criteria they selected. 
   if (confirmNumber === true) {
     alert ("You selected numbers.")
   }
@@ -46,7 +47,7 @@ function generatePassword () {
   if (confirmAlphaUpper === true) {
     alert ("You selected upper case letters.")
   }
-  
+  // Set options variable and give conditionals based on true confirms and concat together
   var passwordOptions = []
 
   if (confirmNumber) {
@@ -61,40 +62,16 @@ function generatePassword () {
   if (confirmAlphaUpper) {
     passwordOptions = passwordOptions.concat(alphaUpper)
   }
-
-  // Create variables for all combination scenarios
-  // var allOptions = number + specialChar + alphaLower + alphaUpper
-  // var a = number + specialChar + alphaLower
-  // var b = number + specialChar + alphaUpper
-  // var c = number + alphaLower + alphaUpper
-  // var d = specialChar + alphaLower + alphaUpper
-  // var e = number + specialChar
-  // var f = number + alphaUpper
-  // var g = number + alphaLower
-  // var h = specialChar + alphaLower
-  // var j = specialChar + alphaUpper
-  // var k = alphaLower + alphaUpper
-
   //  create blank string for new password
   var pwd = ""; 
   // create Math.floor for all possible scenarios
-  // if ((confirmNumber === true) && (confirmSpecialChar === true) && (confirmAlphaLower === true) && (confirmAlphaUpper === true)) {
   for (var i = 0; i < pLength; i++) {
       var pwd = pwd + passwordOptions[Math.floor(Math.random() *passwordOptions.length)];
     }
     return pwd;
-
-  console.log (pLength)
-  console.log (confirmSpecialChar)
-  console.log (confirmNumber)
-  console.log (confirmAlphaLower)
-  console.log (confirmAlphaUpper)
-  console.log (passwordOptions)
   };
 
-  
-  
-
+// Call writePassword function
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -102,8 +79,6 @@ function writePassword() {
   passwordText.value = password;
 
 };
-
-;
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
