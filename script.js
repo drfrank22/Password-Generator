@@ -28,7 +28,14 @@ function generatePassword () {
     confirmalphaLower = (confirm("Click ok if your password will contain lower case letters."));
     confirmalphaUpper = (confirm("Click ok if your password will contain upper case letters."));
   }
-
+  // console.log (confirm[confirmNumber, confirmspecialChar, confirmalphaLower, confirmalphaUpper]);
+  if (!confirmNumber && !confirmspecialChar && !confirmalphaLower && !confirmalphaUpper) {
+    alert("You must choose at least one criteria.");
+    confirmnumber = (confirm("Click ok if your password will contain numbers."));
+    confirmspecialChar = (confirm("Click ok if your password will contain special characters."));
+    confirmalphaLower = (confirm("Click ok if your password will contain lower case letters."));
+    confirmalphaUpper = (confirm("Click ok if your password will contain upper case letters."));
+  }
   };
 
 
