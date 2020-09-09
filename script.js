@@ -15,9 +15,15 @@ function generatePassword () {
     alert ("This needs a value. Try Again.");
     var pLength = (prompt("How many characters would you like your password to include? (Must be between 8 and 128 characters)"));
   }
+  if (!pLength){
+    return;
+  }
   if (pLength < 8 || pLength > 128) {
     alert ("You must choose between 8 and 128 characters. Try Again.");
     var pLength = (prompt("How many characters would you like your password to include? (Must be between 8 and 128 characters)"));
+  }
+  if (pLength < 8 || pLength > 128) {
+    return;
   }
   if (pLength >= 8 || pLength <= 128) {
     alert ("You choose " + pLength + " characters.")
@@ -33,7 +39,11 @@ function generatePassword () {
     var confirmSpecialChar = (confirm("Click ok if your password will contain special characters."));
     var confirmAlphaLower = (confirm("Click ok if your password will contain lower case letters."));
     var confirmAlphaUpper = (confirm("Click ok if your password will contain upper case letters."));
-  };
+  }
+  if (!confirmNumber && !confirmSpecialChar && !confirmAlphaLower && !confirmAlphaUpper) {
+    return;
+    alert("Try Again");
+  }
 // Set Conditionals letting user know what criteria they selected. 
   if (confirmNumber === true) {
     alert ("You selected numbers.")
