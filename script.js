@@ -42,7 +42,6 @@ function generatePassword () {
   }
   if (!confirmNumber && !confirmSpecialChar && !confirmAlphaLower && !confirmAlphaUpper) {
     return;
-    alert("Try Again");
   }
 // Set Conditionals letting user know what criteria they selected. 
   if (confirmNumber === true) {
